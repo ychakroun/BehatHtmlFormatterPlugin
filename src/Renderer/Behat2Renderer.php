@@ -69,6 +69,12 @@ class Behat2Renderer implements RendererInterface {
             $sceTotal += count($obj->getFailedScenarios());
         }
 
+        $strScePending = '';
+        if (null!==$obj->getPendingScenarios() && count($obj->getPendingScenarios()) > 0) {
+            $strScePending = ' <strong class="failed">'.count($obj->getPendingScenarios()).' fail</strong>';
+            $sceTotal += count($obj->getPendingScenarios());
+        }
+
         //--> steps results
         $strStepsPassed = '';
         if (null!==$obj->getPassedSteps() && count($obj->getPassedSteps()) > 0) {
